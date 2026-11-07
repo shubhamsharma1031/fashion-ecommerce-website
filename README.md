@@ -73,4 +73,4 @@ Brand names and products are fictional and created for this project.
 
 ## Author
 
-**Shubham Sharma** · [LinkedIn](https://www.linkedin.com/in/shubham-sharma-27aa38268) · [Portfolio](https://shubhamsharma1031.netlify.app/)
+**Shubham Sharma** · [LinkedIn](https://www.linkedin.com/in/shubhamsharma1031) · [Portfolio](https://shubhamsharma1031.netlify.app/)
