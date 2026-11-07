@@ -1,5 +1,7 @@
 # StyleKart: Fashion E-Commerce Website
 
+![Cover](docs/cover.png)
+
 A responsive fashion e-commerce front end inspired by popular Indian online fashion stores. Built with plain **HTML, CSS and JavaScript**, with no frameworks and no image files: every product picture is an inline SVG.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
@@ -8,7 +10,11 @@ A responsive fashion e-commerce front end inspired by popular Indian online fash
 
 **Live demo:** https://shubhamsharma1031.github.io/fashion-ecommerce-website/
 
-<!-- ![Screenshot](docs/screenshot.png) -->
+## Screenshots
+
+| Home page | Quick view | Shopping bag |
+|---|---|---|
+| ![Home](docs/home.png) | ![Quick view](docs/quick_view.png) | ![Bag](docs/shopping_bag.png) |
 
 ## Features
 
