@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StyleKart: Online Fashion Store</title>
+  <meta name="description" content="StyleKart is a responsive fashion e-commerce front end with search, filters, wishlist and shopping bag.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-in">
+      <a href="#" class="logo" data-cat="All">Style<span>Kart</span></a>
+      <nav class="cats" aria-label="Categories">
+        <a href="#" data-cat="Men">Men</a>
+        <a href="#" data-cat="Women">Women</a>
+        <a href="#" data-cat="Kids">Kids</a>
+        <a href="#" data-cat="Footwear">Footwear</a>
+        <a href="#" data-cat="Accessories">Accessories</a>
+      </nav>
+      <div class="search">
+        <span aria-hidden="true">⌕</span>
+        <input id="search" type="search" placeholder="Search for products, brands and more" aria-label="Search products">
+      </div>
+      <div class="actions">
+        <button class="action" id="openWishlist" aria-label="Wishlist">♡<span>Wishlist</span><i id="wishCount" class="badge">0</i></button>
+        <button class="action" id="openBag" aria-label="Shopping bag">👜<span>Bag</span><i id="bagCount" class="badge">0</i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-in">
+      <div>
+        <p class="eyebrow">END OF SEASON SALE</p>
+        <h1>Flat 50–60% off<br>on top fashion brands</h1>
+        <p>Free delivery on orders above ₹999 · Easy 14-day returns</p>
+        <button class="btn primary" id="shopNow">Shop now</button>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="bubble b1"></div><div class="bubble b2"></div><div class="bubble b3"></div>
+        <span class="tag t1">Kurtas</span><span class="tag t2">Sneakers</span><span class="tag t3">Dresses</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="shop" id="shop">
+    <!-- Filters -->
+    <aside class="filters" id="filters" aria-label="Filters">
+      <div class="filters-head">
+        <h2>Filters</h2>
+        <button class="link" id="clearFilters">Clear all</button>
+        <button class="close" id="closeFilters" aria-label="Close filters">✕</button>
+      </div>
+      <div class="filter-group">
+        <h3>Categories</h3>
+        <div id="filterCategories"></div>
+      </div>
+      <div class="filter-group">
+        <h3>Brand</h3>
+        <div id="filterBrands"></div>
+      </div>
+      <div class="filter-group">
+        <h3>Price</h3>
+        <label class="range-label">Up to <b id="priceLabel">₹2,500</b>
+          <input type="range" id="priceMax" min="300" max="2500" step="100" value="2500"></label>
+      </div>
+      <div class="filter-group">
+        <h3>Discount</h3>
+        <div id="filterDiscount"></div>
+      </div>
+      <div class="filter-group">
+        <h3>Customer rating</h3>
+        <div id="filterRating"></div>
+      </div>
+    </aside>
+
+    <!-- Products -->
+    <section class="results">
+      <div class="results-bar">
+        <div>
+          <h2 id="resultsTitle">All Products</h2>
+          <p id="resultsCount" class="muted"></p>
+        </div>
+        <div class="bar-actions">
+          <button class="btn ghost" id="openFilters">⚙ Filters</button>
+          <label class="sort">Sort by
+            <select id="sort">
+              <option value="relevance">Recommended</option>
+              <option value="new">What's new</option>
+              <option value="priceAsc">Price: low to high</option>
+              <option value="priceDesc">Price: high to low</option>
+              <option value="discount">Better discount</option>
+              <option value="rating">Customer rating</option>
+            </select>
+          </label>
+        </div>
+      </div>
+      <div id="activeChips" class="chips"></div>
+      <div id="grid" class="grid"></div>
+      <div id="empty" class="empty" hidden>
+        <p>😕 No products match your filters.</p>
+        <button class="btn primary" id="emptyReset">Clear filters</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Product quick view -->
+  <div class="overlay" id="overlay" hidden></div>
+  <div class="modal" id="quickView" role="dialog" aria-modal="true" aria-labelledby="qvName" hidden>
+    <button class="close" id="closeQuickView" aria-label="Close">✕</button>
+    <div class="qv-art" id="qvArt"></div>
+    <div class="qv-info">
+      <p class="brand" id="qvBrand"></p>
+      <h2 id="qvName"></h2>
+      <p class="rating-line" id="qvRating"></p>
+      <p class="price-line" id="qvPrice"></p>
+      <p class="muted">Inclusive of all taxes</p>
+      <h3>Select size</h3>
+      <div class="sizes" id="qvSizes"></div>
+      <p class="size-error" id="sizeError" hidden>Please select a size</p>
+      <div class="qv-actions">
+        <button class="btn primary" id="qvAdd">👜 Add to bag</button>
+        <button class="btn ghost" id="qvWish">♡ Wishlist</button>
+      </div>
+      <ul class="perks">
+        <li>✓ 100% original products</li>
+        <li>✓ Pay on delivery available</li>
+        <li>✓ Easy 14-day returns and exchanges</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bag / wishlist drawer -->
+  <aside class="drawer" id="drawer" aria-label="Shopping bag" hidden>
+    <div class="drawer-head">
+      <h2 id="drawerTitle">Shopping Bag</h2>
+      <button class="close" id="closeDrawer" aria-label="Close">✕</button>
+    </div>
+    <div class="drawer-body" id="drawerBody"></div>
+    <div class="drawer-foot" id="drawerFoot"></div>
+  </aside>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <footer class="footer">
+    <p><b>StyleKart</b> is a demo front-end project by Shubham Sharma. Brands and products are fictional.</p>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
